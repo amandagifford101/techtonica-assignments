@@ -1,0 +1,29 @@
+
+
+body {
+    font-family: 'Libre Baskerville', serif;
+    color:black;
+    background-color:tomato;
+}
+
+.left {
+    margin-top: 25px;
+    float: left;
+    
+
+}
+
+.right {
+    float: right;
+    margin-right: 100px;
+    width: 600px;
+}
+
+.links {
+    display: inline-block;
+    position: relative;
+    bottom: 0;
+    overflow: auto;
+
+}
+
