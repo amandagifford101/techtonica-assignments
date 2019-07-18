@@ -1,29 +1,15 @@
-
-
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
 body {
     font-family: 'Libre Baskerville', serif;
     color:black;
-    background-color:tomato;
-}
-
-.left {
-    margin-top: 25px;
-    float: left;
-    
+    background-color:rgb(71, 255, 255);
 
 }
 
-.right {
-    float: right;
-    margin-right: 100px;
-    width: 600px;
-}
-
-.links {
-    display: inline-block;
-    position: relative;
-    bottom: 0;
-    overflow: auto;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: left;
 
 }
 
