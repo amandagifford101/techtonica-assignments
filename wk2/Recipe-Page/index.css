@@ -1,15 +1,17 @@
-@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
+/*@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css');
 body {
     font-family: 'Libre Baskerville', serif;
     color:black;
     background-color:rgb(71, 255, 255);
 
+}*/
+h1 {
+    color: teal;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-
+h5 {
+    text-align: center;
 }
+
+
 
