@@ -106,7 +106,7 @@ const mysteryFunction0 = function(array) {
     }
     return false;
   }
-  /* 0(n log n) */
+  /* 0(N) */
   
   
   const mysteryFunction8 = function(dictionary) {
@@ -118,4 +118,4 @@ const mysteryFunction0 = function(array) {
       return false;
     }
   }
-  /* 0 (n log n) */  
+  /* 0(n) */  
