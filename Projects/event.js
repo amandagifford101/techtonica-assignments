@@ -1,3 +1,10 @@
+class UserPref {
+    constructor(min, max) {
+        this.minPrice = min;
+        this.mxPrice = max;
+    }
+}
+
 class Ticket {
     constructor(type, cost) {
         this.ticketType = type;
@@ -6,9 +13,10 @@ class Ticket {
 }
 
 class Event {
-    constructor(name, description) {
+    constructor(name, description, date) {
         this.name = name;
         this.description = description;
+        this.date = date;
         this.availableTickets =[]
         }
         addAvailableTickets(ticketType, ticketCost) {
@@ -29,8 +37,28 @@ class Event {
             }
             return message;
         }
+        lowestTicket() {
+            let lowest = this.availableTickets[0].cost;
+            for (let i = 1; i < this.availableTickets.length; i++) {
+                if (this.availableTickets[i].cost < lowest) {
+                    lowest = this.availableTickets[i].cost;
+                }
+            }
+            return lowest;
+        }
     }
 
+    // Name and Email validation Function.
+function validation() {
+    var minPrice = $("#minPrice").val();
+    var maxPrice = $("#maxPrice").val();
+    if (minPrice === '' || maxPrice === '') {
+        alert("Please fill in all fields.");
+        return false;
+    } else {
+        return true;
+    }
+};
 
 const event_obj1 = new Event("Black Keys Concert", "Win a guitar signed by the entire band!");
 const event_obj2 = new Event("Zeppelin Constituents: A Led Zeppelin Tribute Band", "Come boogie down to your favorite classics!");
@@ -38,7 +66,7 @@ const event_obj3 = new Event("Gala for Harvey Milk Foundation", "Come join us fo
 
 event_obj1.addAvailableTickets("General Admission", 80);
 event_obj2.addAvailableTickets("General Admission", 33);
-event_obj3.addAvailableTickets("Balcony", 99);
+event_obj3.addAvailableTickets("Balcony", 100);
 event_obj1.addAvailableTickets("VIP", 202);
 event_obj2.addAvailableTickets("VIP", 303);
 event_obj3.addAvailableTickets("VIP", 404);
@@ -52,9 +80,23 @@ console.log(event_array);
 
 $(document).ready(function() {
     let html = "";
-    $.each(event_array, function(index, item) {
-    html+= `<li>${item.name} - ${item.description} - ${item.searchTickets(0, 100)}</li>`;
+    console.log(document.getElementById("maxPrice").nodeValue);
+    console.log(document.getElementById("minPrice").nodeValue);
+    //Submit form with min, max function
+    $("button1").click(function() {
+        var minPrice = $("#minPrice").val();
+        var maxPrice = $("#maxPrice").val();
+        if (validation()) { //Calling Validation function
+            $("form").submit(); //Form Submission
+        }
+
     });
+    $.each(event_array, function(index, item) {
+        html += `<li>${item.name} - ${item.description} - ${item.searchTickets(priceRange.minPrice, priceRange.maxPrice)}</li>`;
+    });
+    // $.each(event_array, function(index, item) {
+    //     html += `<li>${item.name} - ${item.description} - ${item.lowestTicket()}</li>`;
+    // })
     // insert final html into #event...
     $("#event").html(html);
 });
