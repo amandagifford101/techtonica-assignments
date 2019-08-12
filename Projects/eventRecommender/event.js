@@ -96,12 +96,20 @@ class EventRecommender {
         }
     }
 
-    deleteUser() {
-    // Deletes a User from the system
+    deleteUser(userLast) { //My assumption is that the last names are unique;
+        for (i=0; i<this.users.length; i++) {
+            if (this.users[i].last_name === userLast) {
+                this.users.splice(i, 1);
+            }
+        }
     }
    
-    deleteEvent() {
-    // Deletes the Event from the system
+    deleteEvent(targetEvent) {
+        for (i=0;i < this.events.length; i++) {
+            if (this.events[i] === targetEvent) {
+                this.events.splice(i, 1);
+            }
+        }
     }
 
     filter(){
