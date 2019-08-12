@@ -1,3 +1,11 @@
+class User {
+    constructor(first_name, last_name) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.event_array = [];
+    }
+}
+
 class Ticket {
     constructor(type, cost) {
         this.ticketType = type;
@@ -59,9 +67,7 @@ event_array.push(event_obj1, event_obj2, event_obj3);
 
 console.log(event_array);
 class EventRecommender {
-    constructor(userFirst, userLast, signUpDate, email, phoneNumber) {
-    this.first = userFirst;
-    this.last = userLast;
+    constructor(signUpDate, email, phoneNumber) {
     this.date = signUpDate;
     this.email = email;
     this.number = phoneNumber;
@@ -76,12 +82,18 @@ class EventRecommender {
     this.events.push(event);
     }
 
-    addUser() {
-    // Adds a new User to the System
+    addUser(userFirst, userLast) {
+    const user = new User(userFirst, userLast);
+    this.users.push(user);
     }
 
-    saveUserEvent(){
-    //Allow users to save events to a personal Events array.
+    saveUserEvent(user, event){
+    for (let i=0;this.users.length > i;i++) {
+        if (this.users[i].first_name === user.first_name && this.users[i].last_name === user.last_name) {
+            this.users[i].event_array.push(event);
+            break;
+            }
+        }
     }
 
     deleteUser() {
@@ -96,14 +108,24 @@ class EventRecommender {
     }
 }
 
-$(document).ready(function() {
-    let html = "";
-    $.each(event_array, function(index, item) {
-        html += `<li>${item.name} - ${item.description} - ${item.searchTickets(0, 100)}</li>`;
-    });
-    $.each(event_array, function(index, item) {
-        html += `<li>${item.name} - ${item.description} - ${item.lowestTicket()}</li>`;
-    })
-    // insert final html into #event...
-    $("#event").html(html);
-});
+const event_rec1 = new EventRecommender("Nov 30, 2019", "email@email.com", "1234567890");
+
+event_rec1.addUser("Kay", "Gifford");
+
+const user1 = new User("Kay", "Gifford");
+event_rec1.saveUserEvent(user1,event_obj1);
+console.log('######');
+console.log(event_rec1);
+console.log(event_rec1.users[0].event_array);
+
+// $(document).ready(function() {
+//     let html = "";
+//     $.each(event_array, function(index, item) {
+//         html += `<li>${item.name} - ${item.description} - ${item.searchTickets(0, 100)}</li>`;
+//     });
+//     $.each(event_array, function(index, item) {
+//         html += `<li>${item.name} - ${item.description} - ${item.lowestTicket()}</li>`;
+//     })
+//     // insert final html into #event...
+//     $("#event").html(html);
+// });
