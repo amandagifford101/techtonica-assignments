@@ -1,0 +1,48 @@
+Independent Practice
+Exercise 1
+Imagine you are creating a food website that will have recipes by top chefs from around the world. The following data will be required:
+
+recipe name
+number of ingredients
+ingredients
+difficulty level
+cook time
+chef (who wrote the recipe)
+country (where the chef lives)
+city (where the chef lives)
+restaurants where the chef has worked
+chef's favorite ingredient
+Answer the following questions:
+
+What are the entities?
+    Recipe, Chef
+What are the attributes of each entity?
+    Recipe: Name, ingredients, ingredient count, difficulty, cook time.
+    Chef: Name, Country, City, Restaurant List, Recipe List(ID's).
+What are the data types of the attributes?
+    text, int, int, int, int.
+    text, text, text, text, text.
+What are the relationships between the entities?
+    One to Multiple because the Chef's can have multiple recipes but the Recipe's can only have one chef.
+Draw a diagram of your data model.
+    (see sqlite attachment)
+Is your data model normalized? Why or why not? If not, can you change it to be normalized?
+    While there is no redundant information, I would also optimize the code to make sure that there would be no duplicates
+    in the database.
+Are there other ways you might model this data?
+    Not really, pretty straightforward.
+Exercise 2
+Select one of your most-used or favorite websites to click through.
+Pick one type of user flow, like buying an item.
+List the data that is required for this flow. - Organize the data into entities and attributes of each entity. Draw a diagram of your data model.
+    Youtube: Payment: CC number, exp date, CVV      User:   Username, email, location, etc  
+Exercise 3
+In your own words, define the following term:
+
+Foreign key
+    A foreign key is using one entities key in another entity in order to reference that entities attributes.
+What are the 3 types of database relationships? Briefly explain each one.
+    One-to-one: each one can only reference the other.
+    one-to-many: one can reference many items of the other, but the other can only reference one of that entity
+    many-to-many: both have many references to many of the other. Need a join.
+
