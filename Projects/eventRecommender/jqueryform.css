@@ -26,7 +26,7 @@ ul {
     background-color: #4CAF50;
   }
     
-    div#form1, div#form2{
+    div#form1, div#form2, div#addUserEvent, div#deleteUserEvent, div#addEvent, div#deleteEvent, div#searchEvents{
         /* align-self:baseline; */
         /* justify-content: space-between; */
         /* width:250px;

@@ -131,9 +131,125 @@ $(document).ready(function() {
         id: 'submit',
         value: 'Submit'
         })))
-    $("div#form1").append(
+    // $("div#form1").append(
+    //     // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+    //     $("<h3/>").text("Add Events to Personal Collection"), $("<p/>").text("Complete all fields"), $("<form/>", {
+    //     action: '#',
+    //     method: '#'
+    //     }).append(
+    //     // Create <form> Tag and Appending in HTML Div form1.
+    //     $("<input/>", {
+    //     type: 'text',
+    //     id: 'Username',
+    //     placeholder: 'Username'
+    //     }), // Creating Input Element With Attribute.
+    //     $("<input/>", {
+    //     type: 'text',
+    //     id: 'event_title',
+    //     placeholder: 'Event Title'
+    //     }), $("<br/>"), 
+    //     $("<input/>", {
+    //     type: 'button',
+    //     id: 'submit2',
+    //     value: 'Submit'
+    //     })))
+        $("div#deleteUserEvent").append(
+            // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+            $("<h3/>").text("Delete User Event"), $("<p/>").text("Complete all fields"), $("<form/>", {
+            action: '#',
+            method: '#'
+            }).append(
+            // Create <form> Tag and Appending in HTML Div form1.
+            $("<input/>", {
+            type: 'text',
+            id: 'username',
+            placeholder: 'Username'
+            }), // Creating Input Element With Attribute.
+            $("<input/>", {
+            type: 'text',
+            id: 'first',
+            placeholder: 'First Name'
+            }), $("<input/>", {
+            type: 'text',
+            id: 'last',
+            placeholder: 'Last Name'
+            }), $("<br/>"), $("<input/>", {
+            type: 'button',
+            id: 'submit',
+            value: 'Submit'
+            })))
+        $("div#addUserEvent").append(
+            // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+            $("<h3/>").text("Add User Event to personal collection"), $("<p/>").text("Complete all fields"), $("<form/>", {
+            action: '#',
+            method: '#'
+            }).append(
+            // Create <form> Tag and Appending in HTML Div form1.
+            $("<input/>", {
+            type: 'text',
+            id: 'Username',
+            placeholder: 'Username'
+            }), // Creating Input Element With Attribute.
+            $("<input/>", {
+            type: 'text',
+            id: 'event_title',
+            placeholder: 'Event Title'
+            }), $("<br/>"), 
+            $("<input/>", {
+            type: 'button',
+            id: 'submit2',
+            value: 'Submit'
+            })))
+    $("div#deleteEvent").append(
         // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
-        $("<h3/>").text("Add Events to Personal Collection"), $("<p/>").text("Complete all fields"), $("<form/>", {
+        $("<h3/>").text("Delete Event (Admin Access Only)"), $("<p/>").text("Complete all fields"), $("<form/>", {
+        action: '#',
+        method: '#'
+        }).append(
+        // Create <form> Tag and Appending in HTML Div form1.
+        $("<input/>", {
+        type: 'text',
+        id: 'adminUsername2',
+        placeholder: 'Username'
+        }), // Creating Input Element With Attribute.
+        $("<input/>", {
+        type: 'text',
+        id: 'adminPassword',
+        placeholder: 'Password'
+        }), $("<input/>", {
+        type: 'text',
+        id: 'eventTitle2',
+        placeholder: 'Event Title'
+        }), $("<br/>"), $("<input/>", {
+        type: 'button',
+        id: 'submit',
+        value: 'Submit'
+        })))
+    $("div#addEvent").append(
+        // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+        $("<h3/>").text("Add Event (Admin Access Only)"), $("<p/>").text("Complete all fields"), $("<form/>", {
+        action: '#',
+        method: '#'
+        }).append(
+        // Create <form> Tag and Appending in HTML Div form1.
+        $("<input/>", {
+        type: 'text',
+        id: 'adminUsername1',
+        placeholder: 'Username'
+        }), // Creating Input Element With Attribute.
+        $("<input/>", {
+        type: 'text',
+        id: 'eventTitle1',
+        placeholder: 'Event Title'
+        }),$("<br/>"), 
+        $("<input/>", {
+        type: 'button',
+        id: 'submit2',
+        value: 'Submit'
+        })))
+    $("div#searchEvents").append(
+        // Creating Form Div and Adding <h2> and <p> Paragraph Tag in it.
+        $("<h3/>").text("Search for you favorite events!"), $("<p/>").text("Complete all fields"), $("<form/>", {
         action: '#',
         method: '#'
         }).append(
@@ -174,4 +290,17 @@ $(document).ready(function() {
             }
         }
     })
+    $("#adminAdd").click(function() {
+        const adminUsername = $("#adminUsername1").val();
+        const event_title = $("eventTitle1").val();
+
+        for (i=0; i<event_rec_obj1.event.length; i++) {
+            if (event_title === event_rec_obj1.events[i]) {
+                alert("Event already exists. Please enter another event.");
+            }
+        }
+        event_rec_obj1.events.push(event_title);
+    })
     });
+
+    module.exports = EventRecommender;
