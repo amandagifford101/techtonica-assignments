@@ -11,3 +11,4 @@ const app = require('./app');
      app.startQuestion(()=>{ connection.end() });
   })
 }
+pgConnect();

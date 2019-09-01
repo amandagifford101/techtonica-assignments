@@ -1,4 +1,5 @@
-const eventfulKey = require("./keys.js").eventful;
+require('dotenv').config();
+const eventfulKey = process.env.EVENTFUL_KEY;
 const eventful = require('eventful-node');
 const client = new eventful.Client(eventfulKey);
 
