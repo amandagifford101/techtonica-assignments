@@ -109,17 +109,18 @@ const eventfulKey = process.env.EVENTFUL_KEY;
  app.matchUserWithEvent = (continueCallback) => {
    let questions = [
     {name: 'username', message: 'What is the username of the user you would like to match with an event?'},
-    {name: 'eventTitle', message: 'What is the event title of the user you would like to match this user with?'}
+    {name: 'eventTitle', message: 'What is the event title of the event you would like to match this user with?'}
    ];
   inquirer
   .prompt(questions)
   .then(answer => {
-    const { username, eventTitle } = answer;
-    connection.query('INSERT INTO usersPerEvent (username, eventTitle) VALUES ($1, $2)', [username, eventTitle], (error, results) => {
+    connection.query('SELECT $1, $2 FROM users INNER JOIN events ON users.id = events.id', [answer.username, answer.eventTitle], (error, results) => {
         if (error) {
           throw error;
         }
-        console.log(`User ${username} linked with ${eventTitle}.`);
+        console.log(answer.username, answer.eventTitle);
+        console.log(results.rows);
+        // console.log(`User ${username} linked with ${eventTitle}.`);
         continueCallback();   
     }) 
   })
